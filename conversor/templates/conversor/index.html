@@ -1,0 +1,61 @@
+{% load static %}<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Conversor Numérico · Django</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'conversor/estilos.css' %}">
+</head>
+<body>
+<div class="blob b1"></div><div class="blob b2"></div>
+<div class="wrap">
+  <header>
+    <h1>Conversor Numérico</h1>
+    <p>Binario · Octal · Decimal · Hexadecimal</p>
+  </header>
+
+  <div class="card input-card">
+    <div>
+      <label for="num">Número de entrada</label>
+      <input id="num" value="255" autocomplete="off" spellcheck="false" placeholder="Escribe un número...">
+    </div>
+    <div>
+      <label for="base">Base de entrada</label>
+      <select id="base">
+        {% for b, nombre in bases %}<option value="{{ b }}"{% if b == 10 %} selected{% endif %}>{{ nombre }} ({{ b }})</option>{% endfor %}
+      </select>
+    </div>
+    <div class="chips">
+      <button class="chip" data-v="42" data-b="10">42</button>
+      <button class="chip" data-v="11111111" data-b="2">11111111₂</button>
+      <button class="chip" data-v="FF" data-b="16">FF₁₆</button>
+      <button class="chip" data-v="777" data-b="8">777₈</button>
+      <button class="chip" data-v="-128" data-b="10">-128</button>
+      <button class="chip" data-v="DEADBEEF" data-b="16">DEADBEEF₁₆</button>
+      <button class="chip" data-v="18446744073709551615" data-b="10">2⁶⁴−1</button>
+    </div>
+    <div class="msg" id="msg"></div>
+  </div>
+
+  <div class="grid" id="results"></div>
+
+  <h2>Visualizador de bits <small style="font-weight:400">(haz clic en un bit para cambiarlo)</small></h2>
+  <div class="card">
+    <div class="bitctl">
+      <div class="chips" id="widths"></div>
+      <div class="tag" id="bitinfo"></div>
+    </div>
+    <div class="bits" id="bits"></div>
+  </div>
+
+  <h2>Información</h2>
+  <div class="card info" id="info"></div>
+
+  <footer>Hecho con Django · Haz clic en cualquier resultado para copiarlo · Soporta números enormes y negativos</footer>
+</div>
+<div class="toast" id="toast">¡Copiado!</div>
+<script>const API_URL = "{% url 'conversor:api_convertir' %}";</script>
+<script src="{% static 'conversor/app.js' %}"></script>
+</body>
+</html>
