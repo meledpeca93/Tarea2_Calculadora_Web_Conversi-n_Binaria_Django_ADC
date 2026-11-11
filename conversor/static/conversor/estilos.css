@@ -1,12 +1,17 @@
 :root{--bg1:#0f0c29;--bg2:#302b63;--bg3:#24243e;--card:rgba(255,255,255,.06);--border:rgba(255,255,255,.12);--text:#eef;--muted:#a9a9c8;--accent:#7c5cff;--accent2:#00d4ff;--ok:#2ee59d;--err:#ff5c7c}
+
 *{box-sizing:border-box;margin:0;padding:0}
+
 body{font-family:Inter,system-ui,sans-serif;color:var(--text);min-height:100vh;background:linear-gradient(135deg,var(--bg1),var(--bg2),var(--bg3));background-attachment:fixed;padding:32px 16px}
+
 .blob{position:fixed;border-radius:50%;filter:blur(90px);opacity:.35;z-index:-1}
 .b1{width:420px;height:420px;background:var(--accent);top:-120px;left:-100px}
+
 .b2{width:380px;height:380px;background:var(--accent2);bottom:-120px;right:-80px}
 .wrap{max-width:1100px;margin:0 auto}
 header{text-align:center;margin-bottom:28px}
 h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:800;background:linear-gradient(90deg,#fff,var(--accent2),var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent}
+
 header p{color:var(--muted);margin-top:8px}
 .card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:24px;backdrop-filter:blur(14px);box-shadow:0 10px 40px rgba(0,0,0,.3)}
 .input-card{display:grid;grid-template-columns:1fr 220px;gap:16px;align-items:end}

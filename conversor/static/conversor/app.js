@@ -52,6 +52,8 @@ function aBase(v, base) {
   return (v < 0n ? '-' : '') + (v < 0n ? -v : v).toString(base).toUpperCase();
 }
 
+
+
 $('bits').addEventListener('click', e => {
   const el = e.target.closest('.bit');
   if (!el || !datos) return;
@@ -62,6 +64,8 @@ $('bits').addEventListener('click', e => {
   numEl.value = aBase(u, +baseEl.value);
   convertir();
 });
+
+
 $('widths').addEventListener('click', e => {
   const c = e.target.closest('[data-w]');
   if (!c) return;
